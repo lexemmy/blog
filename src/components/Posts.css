@@ -1,0 +1,33 @@
+
+.flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.postContainer {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  position: relative;
+}
+
+.postLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #dc3545; 
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.deleteButton:hover {
+  background-color: #c82333; 
+}

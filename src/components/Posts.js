@@ -1,34 +1,27 @@
-import React from 'react';
-import Post from './Post';
+import axios from 'axios'
+import React from 'react'
+import Post from './Post'
+import { Link } from 'react-router-dom'
+import './Posts.css'
 
-export const initialPostsData = [
-  { id: 111, title: 'Happiness', author: 'John' },
-  { id: 112, title: 'MIU', author: 'Dean' },
-  { id: 113, title: 'Enjoy Life', author: 'Jasmine' },
-];
-
-const Posts = ({ postsData, setPostsData }) => {
-  const updatePostTitle = (id, newTitle) => {
-    setPostsData((prevPostsData) => {
-      return prevPostsData.map((post) =>
-        post.id === id ? { ...post, title: newTitle } : post
-      );
-    });
-  };
-
+const Posts = ({ postsData, setPostsData, onDeletePost }) => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <div className="flexContainer">
       {postsData.map((post) => (
-        <Post
-          key={post.id}
-          id={post.id}
-          title={post.title}
-          author={post.author}
-          updatePostTitle={updatePostTitle}
-        />
+        <div key={post.id} className="postContainer">
+          <Link to={`/posts/${post.id}`} className="postLink">
+            <Post
+              key={post.id}
+              id={post.id}
+              title={post.title}
+              author={post.userEmail}
+            />
+          </Link>
+          <button className="deleteButton" onClick={() => onDeletePost(post.id)}>Delete  </button>
+        </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Posts;
+export default Posts
